@@ -1,4 +1,5 @@
-C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\Nueva carpeta\biblioteca\src\main\java\com\functions\serverless\PrestamoCrudHandler.java
-C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\Nueva carpeta\biblioteca\src\main\java\com\functions\App.java
-C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\Nueva carpeta\biblioteca\src\main\java\com\functions\serverless\EstudianteCrudHandler.java
-C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\Nueva carpeta\biblioteca\src\main\java\com\functions\serverless\LibroCrudHandler.java
+C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\biblioteca_CNII\biblioteca\src\main\java\com\functions\App.java
+C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\biblioteca_CNII\biblioteca\src\main\java\com\functions\azure\BibliotecaFunctionApp.java
+C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\biblioteca_CNII\biblioteca\src\main\java\com\functions\serverless\LibroAzureHandler.java
+C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\biblioteca_CNII\biblioteca\src\main\java\com\functions\serverless\PrestamoAzureHandler.java
+C:\Users\lokii\OneDrive\Desktop\U 2025\2026\Desarrollo Cloud Native II\Act Sum I\biblioteca_CNII\biblioteca\src\main\java\com\functions\serverless\EstudianteAzureHandler.java
