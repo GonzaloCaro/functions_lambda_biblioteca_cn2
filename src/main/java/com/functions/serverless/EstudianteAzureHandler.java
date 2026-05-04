@@ -98,7 +98,7 @@ public class EstudianteAzureHandler {
 
         String dbUrl = envOrDefault("BIBLIOTECA_DB_URL", "jdbc:oracle:thin:@cxtjowjkr0mdsxfa_high");
         String dbUser = envOrDefault("BIBLIOTECA_DB_USER", "biblioteca_CN2");
-        String dbPassword = envOrDefault("BIBLIOTECA_DB_PASSWORD", "");
+        String dbPassword = envOrDefault("BIBLIOTECA_DB_PASSWORD", "Caroorion1780*");
 
         Properties props = new Properties();
         props.put("user", dbUser);

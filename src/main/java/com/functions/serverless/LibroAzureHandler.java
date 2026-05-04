@@ -1,5 +1,6 @@
 package com.functions.serverless;
 
+import com.functions.eventgrid.EventGridService;
 import com.google.gson.Gson;
 import com.microsoft.azure.functions.ExecutionContext;
 import com.microsoft.azure.functions.HttpMethod;
@@ -53,6 +54,11 @@ public class LibroAzureHandler {
                     String bodyPost = request.getBody();
                     Libro nuevoLibro = GSON.fromJson(bodyPost, Libro.class);
                     crearLibro(connection, nuevoLibro);
+                    EventGridService.publicarEvento(
+                            "/biblioteca/libros/" + nuevoLibro.isbn,
+                            "Biblioteca.Libro.Creado",
+                            nuevoLibro,
+                            context.getLogger());
                     return jsonResponse(request, HttpStatus.CREATED, "{\"mensaje\": \"Libro creado exitosamente\"}");
 
                 case "PUT":
@@ -98,7 +104,7 @@ public class LibroAzureHandler {
 
         String dbUrl = envOrDefault("BIBLIOTECA_DB_URL", "jdbc:oracle:thin:@cxtjowjkr0mdsxfa_high");
         String dbUser = envOrDefault("BIBLIOTECA_DB_USER", "biblioteca_CN2");
-        String dbPassword = envOrDefault("BIBLIOTECA_DB_PASSWORD", "");
+        String dbPassword = envOrDefault("BIBLIOTECA_DB_PASSWORD", "Caroorion1780*");
 
         Properties props = new Properties();
         props.put("user", dbUser);
@@ -156,12 +162,23 @@ public class LibroAzureHandler {
                 libro.titulo = rs.getString("titulo");
                 libro.autor = rs.getString("autor");
                 libro.isbn = rs.getString("isbn");
-                libro.anio_publicacion = (Integer) rs.getObject("anio_publicacion");
-                libro.stock = (Integer) rs.getObject("stock");
+                libro.anio_publicacion = readNullableInteger(rs, "anio_publicacion");
+                libro.stock = readNullableInteger(rs, "stock");
                 libros.add(libro);
             }
         }
         return libros;
+    }
+
+    private Integer readNullableInteger(ResultSet rs, String columnName) throws SQLException {
+        Object raw = rs.getObject(columnName);
+        if (raw == null) {
+            return null;
+        }
+        if (raw instanceof Number) {
+            return ((Number) raw).intValue();
+        }
+        return Integer.valueOf(raw.toString());
     }
 
     private void crearLibro(Connection conn, Libro libro) throws SQLException {
